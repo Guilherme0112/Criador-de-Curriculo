@@ -1,30 +1,23 @@
-<title>Perfil</title>
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.guest')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    <livewire:profile.update-profile-information-form />
-                </div>
-            </div>
+@section('links')
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    <livewire:profile.update-password-form />
-                </div>
-            </div>
+@endsection
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    <livewire:profile.delete-user-form />
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+@section('title')
+    {{ Auth::user()->name }}
+@endsection
+
+@section('header')
+<a href="" class="link-header">Criar CV</a>
+<a href="{{ route('dashboard') }}" class="link-header">Dashboard</a>
+<form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button type="submit" class="btn btn-link">Sair</button>
+</form>
+{{ $slot = '' }}
+@endsection
+
+@section('content')
+    teste
+@endsection

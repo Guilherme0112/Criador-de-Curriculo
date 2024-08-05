@@ -32,6 +32,9 @@ new #[Layout('layouts.guest')] class extends Component
 
 @endsection
 
+@section('header')
+    <a href="{{ route('register') }}" class="link-header">Criar Conta</a>
+@endsection
     <div class="form">
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

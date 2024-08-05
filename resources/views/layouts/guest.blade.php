@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="../icon.png" type="image/x-icon">
+        <link rel="stylesheet" href="../css/style.css">
         @yield('links')
         <title>@yield('title')</title>
 
@@ -17,13 +18,11 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <header>
-            <a href="{{ route('index') }}" class="link-header">
-                <h1>
-                    Curriculando
-                </h1>
-            </a>
+            <a href="{{ route('index') }}" class="link-header">Início</a>
+            @yield('header')
         </header>
         <main>
+            @yield('content')
             {{ $slot }}
         </main>
     </body>

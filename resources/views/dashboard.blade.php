@@ -1,17 +1,24 @@
-<title>{{__('Dashboard')}}</title>
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("Você está logado") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+@extends('layouts.guest')
+
+{{ $slot = ''}}
+
+@section('links')
+
+@endsection
+
+@section('title')
+    Dashboard
+@endsection
+
+@section('header')
+    <a href="" class="link-header">Criar CV</a>
+    <a href="{{ route('profile') }}" class="link-header">Meu Perfil</a>
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="btn btn-link">Sair</button>
+    </form>
+@endsection
+
+@section('content')
+
+@endsection
