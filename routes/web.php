@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CurriculoController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'index')->name('index');
+Route::get('/', [CurriculoController::class, 'index'])->name('index');
 
 // Só deixa o usuário entrar no dashboard e perfil caso esteja autenticado
 

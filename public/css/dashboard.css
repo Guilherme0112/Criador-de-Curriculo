@@ -1,0 +1,9 @@
+main{
+    padding: 10px 0;
+}
+.modelos{
+    width: 100%;
+}
+.modelos * {
+    font-size: 30px;
+}

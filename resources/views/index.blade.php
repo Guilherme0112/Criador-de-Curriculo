@@ -9,7 +9,7 @@
 @section('content')
     <header>
         @if(Auth::check())
-            <a href="" class="link-header">Criar CV</a>
+            <a href="{{ route('criar') }}" class="link-header">Criar CV</a>
             <a href="{{ route('dashboard') }}" class="link-header">Dashboard</a>    
             <a href="{{ route('profile') }}" class="link-header">Meu Perfil</a>
             <form method="POST" action="{{ route('logout') }}">
@@ -28,7 +28,11 @@
             </div>
             <div class="parte-1">
                 <h1>Crie seu currículo agora mesmo!</h1>
-                <button class="btn-one">Criar Currículo</button>
+                @if(Auth::check())
+                    <a href="{{ route('dashboard') }}" class="btn-one">Criar Currículo</a>
+                @else
+                    <a href="{{ route('login') }}" class="btn-one">Criar Currículo</a>
+                @endif
             </div>
         </section>
         <section class="parte-2">
@@ -47,5 +51,18 @@
                 </h3>
             </div>
         </section>
+        <section>
+            @foreach($informacoes as $informacao)
+                <div class="box-inf">
+                    <h1>{{ $informacao->title }}</h1>
+                    <p>
+                        {{ $informacao->informacoes }}
+                    </p>
+                </div>
+            @endforeach
+        </section>
     </main>
+    <footer>
+
+    </footer>
 @endsection
