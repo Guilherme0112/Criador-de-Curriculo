@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="../icon.png" type="image/x-icon">
+        @yield('links')
         <title>@yield('title')</title>
 
         <!-- Fonts -->
@@ -15,10 +16,15 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
-        </div>
+        <header>
+            <a href="{{ route('index') }}" class="link-header">
+                <h1>
+                    Curriculando
+                </h1>
+            </a>
+        </header>
+        <main>
+            {{ $slot }}
+        </main>
     </body>
 </html>

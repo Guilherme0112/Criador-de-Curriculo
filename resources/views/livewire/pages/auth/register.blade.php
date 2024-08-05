@@ -38,7 +38,12 @@ new #[Layout('layouts.guest')] class extends Component
 
 @section('title', 'Registrar')
 
-<div>
+@section('links')
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/style.css">
+@endsection
+
+<div class="form">
     <form wire:submit="register">
         <!-- Name -->
         <div>

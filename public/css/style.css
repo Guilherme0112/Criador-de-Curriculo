@@ -5,6 +5,8 @@
     box-sizing: border-box;
     font-family: figtree;
     color: rgb(0, 45, 107);
+    outline: 0;
+    border: 0;
 }
 body{
     width: 100%;
@@ -25,4 +27,64 @@ header{
 .link-header{
 
     text-decoration: none;
+}
+main, section{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+/* Primeira parte da página */
+
+.parte-1{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    text-align: center;
+    margin: 20px 0;
+}
+.parte-1 h1{
+    width: 100%;
+    margin: 30px 0;
+    font-size: 30px;
+}
+.img-one{
+    width: 300px;
+    height: 300px;
+    border-radius: 7px;
+}
+.btn-one{
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(0, 45, 107);
+    transition: .3s;
+}
+.btn-one:hover{
+    border-bottom: 7px solid rgb(0, 81, 193);
+}
+
+/* Segunda parte da página */
+
+.parte-2{
+    background-color: rgb(0, 45, 107);
+    height: 300px;
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+.parte-2 *{
+    color: white;
+}
+.passos{
+    text-align: start;
 }
