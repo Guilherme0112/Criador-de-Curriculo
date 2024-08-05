@@ -37,6 +37,37 @@ main, section{
     flex-wrap: wrap;
 
 }
+/* Botões */
+
+.btn-link{
+    font-size: 16px;
+    cursor: pointer;
+    background-color: transparent;
+}
+.btn-one{
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    background-color: rgb(0, 45, 107);
+    transition: .3s;
+}
+.btn-one:hover{
+    border-bottom: 7px solid rgb(0, 81, 193);
+}
+.btn-danger{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgb(194, 36, 36);
+    color: white;
+    transition: .3s;
+}
+.btn-danger:hover{
+    background-color: rgb(152, 28, 28);
+}
 
 /* Primeira parte da página */
 
@@ -60,19 +91,7 @@ main, section{
     height: 300px;
     border-radius: 7px;
 }
-.btn-one{
-    width: 200px;
-    height: 50px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
-    background-color: rgb(0, 45, 107);
-    transition: .3s;
-}
-.btn-one:hover{
-    border-bottom: 7px solid rgb(0, 81, 193);
-}
+
 
 /* Segunda parte da página */
 

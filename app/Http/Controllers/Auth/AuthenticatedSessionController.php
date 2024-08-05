@@ -35,4 +35,16 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->route('login');
     }
+
+    public function destroyAccount(Request $request)
+    {   
+        $user = $request->user();
+
+        $user->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login')->with('Success', 'Conta excluída com sucesso!');
+    }
 }

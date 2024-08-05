@@ -2,8 +2,6 @@
 
 @section('links')
     <link rel="shortcut icon" href="../icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../css/style.css">
-
 @endsection
 
 @section('title', 'Curriculados')
@@ -12,10 +10,13 @@
     <header>
         @if(Auth::check())
             <a href="" class="link-header">Criar CV</a>
-            <a href="{{ route('profile') }}" class="link-header">Meu Perfil</a>
             <a href="{{ route('dashboard') }}" class="link-header">Dashboard</a>    
-            <a href="{{ route('logout') }}" class="link-header">Sair</a>    
-            @else
+            <a href="{{ route('profile') }}" class="link-header">Meu Perfil</a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="btn btn-link">Sair</button>
+            </form>
+        @else
             <a href="{{ route('register') }}" class="link-header">Criar Conta</a>
             <a href="{{ route('login') }}" class="link-header">Entrar</a>
         @endif
