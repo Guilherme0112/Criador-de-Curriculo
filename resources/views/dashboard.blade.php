@@ -12,7 +12,6 @@
 @endsection
 
 @section('header')
-    <a href="{{ route('criar') }}" class="link-header">Criar CV</a>
     <a href="{{ route('profile') }}" class="link-header">Meu Perfil</a>
     <form method="POST" action="{{ route('logout') }}" class="form-header">
         @csrf

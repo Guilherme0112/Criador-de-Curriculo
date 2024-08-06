@@ -36,6 +36,8 @@ class AuthenticatedSessionController extends Controller
         return redirect()->route('login');
     }
 
+    // Apaga a conta
+    
     public function destroyAccount(Request $request)
     {   
         $user = $request->user();

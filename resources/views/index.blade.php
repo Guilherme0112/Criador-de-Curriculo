@@ -9,7 +9,6 @@
 @section('content')
     <header>
         @if(Auth::check())
-            <a href="{{ route('criar') }}" class="link-header">Criar CV</a>
             <a href="{{ route('dashboard') }}" class="link-header">Dashboard</a>    
             <a href="{{ route('profile') }}" class="link-header">Meu Perfil</a>
             <form method="POST" action="{{ route('logout') }}">

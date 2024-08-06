@@ -12,8 +12,8 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
+Route::get('/profile', [CurriculoController::class, 'profile'])
+    ->middleware('auth')
     ->name('profile');
 
 Route::view('criar', 'criar')

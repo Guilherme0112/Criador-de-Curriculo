@@ -10,7 +10,6 @@
 @endsection
 
 @section('header')
-<a href="{{ route('criar') }}" class="link-header">Criar CV</a>
 <a href="{{ route('dashboard') }}" class="link-header">Dashboard</a>
 <form method="POST" action="{{ route('logout') }}">
     @csrf
@@ -20,6 +19,21 @@
 @endsection
 
 @section('content')
+    <section class="box">
+
+    </section>
+    <div class="box-1">
+        <h1>Informações Pessoais</h1>
+        <b>Nome: </b>
+        <p>{{ $usuario->name }}</p>
+        <b>Email: </b>
+        <p>{{ $usuario->email }}</p>
+        <b>Membro Desde:</b>
+        <p>{{ $dateFormat }}</p>
+    </div>
+    <div class="box-1"> 
+        <h1>Modelos Favoritos</h1>
+    </div>
     <section class="box">
         <p>A exlusão da sua conta é uma ação permanente, então antes de tomar qualquer decisão pense cautelosamente.</p> 
         <form method="POST" action="{{ route('destroyAccount') }}">
