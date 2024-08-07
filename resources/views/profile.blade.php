@@ -35,7 +35,7 @@
         <h1>Modelos Favoritos</h1>
     </div>
     <section class="box">
-        <p>A exlusão da sua conta é uma ação permanente, então antes de tomar qualquer decisão pense cautelosamente.</p> 
+        <p>A exclusão da sua conta é uma ação permanente, então antes de tomar qualquer decisão pense cautelosamente.</p> 
         <form method="POST" action="{{ route('destroyAccount') }}">
             @csrf
             @method('delete')

@@ -21,6 +21,10 @@
 
 @section('content')
     <section class="modelos">
-        
+        @foreach($modelos as $modelo)
+            <a href="{{ route('criar', ['id' => $modelo->id]) }}" class="box-model">
+                <img src="{{ $modelo->img }}" alt="" class="img-model">
+            </a>
+        @endforeach
     </section>
 @endsection

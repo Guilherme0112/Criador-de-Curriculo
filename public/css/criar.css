@@ -1,0 +1,29 @@
+main{
+    padding: 20px;
+    align-items: normal !important;
+}
+.papel{
+    width: 455px;
+    aspect-ratio: 1/1.25;
+
+    border-radius: 7px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+
+    display: flex;
+    justify-content: start;
+    align-items: unset !important;
+    padding: 10px;
+    margin: 0 10px;
+}
+.info{
+    width: 300px;
+    height: 100px;
+    border-radius: 7px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 10px;
+
+    justify-content: start;
+    align-items: normal;
+}

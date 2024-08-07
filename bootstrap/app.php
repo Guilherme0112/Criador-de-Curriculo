@@ -16,3 +16,5 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+
+    $app->register(\Barryvdh\DomPDF\ServiceProvider::class);

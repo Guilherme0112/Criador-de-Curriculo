@@ -4,6 +4,24 @@ main{
 .modelos{
     width: 100%;
 }
-.modelos * {
-    font-size: 30px;
+
+/* Configurações da caixa do modelo */
+
+.box-model{
+    width: 280px;
+    height: 370px;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+
+    padding: 10px;
+}
+.img-model{
+
+    width: 100%;
+    height: 100%;
+    background-color: black;
+
+    border-radius: 7px;
+
 }

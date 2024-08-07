@@ -8,16 +8,17 @@ Route::get('/', [CurriculoController::class, 'index'])->name('index');
 
 // Só deixa o usuário entrar no dashboard e perfil caso esteja autenticado
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
+Route::get('/dashboard', [CurriculoController::class, 'dashboard'])
+    ->middleware('auth')
     ->name('dashboard');
 
 Route::get('/profile', [CurriculoController::class, 'profile'])
     ->middleware('auth')
     ->name('profile');
 
-Route::view('criar', 'criar')
-    ->middleware(['auth', 'verified'])
+Route::get('/criar/{id}', [CurriculoController::class, 'criar'])
+    ->where('id', '[0-9]+')
+    ->middleware('auth')
     ->name('criar');
 
 // Rota de logout
