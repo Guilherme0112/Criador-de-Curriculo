@@ -24,6 +24,11 @@ form{
     width: 100%;
 }
 .box-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
     width: 560px;
     height: 200px;
     margin: 5px;
@@ -33,7 +38,35 @@ form{
 
     padding: 10px;
 }
-.box-1 h1{
+.box-1 h1, .box-2 h1{
     text-align: center;
     font-size: 20px;
+    width: 100%;
+}
+.box-2{
+    width: 560px;
+    height: 200px;
+    margin: 5px;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+.btn-ajuda{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    width: 80%;
+    height: 40px;
+    border-radius: 7px;
+    background-color: #272c6b;
+    color: white;
+    margin: 10px;
+    transition: .3s;
+}
+.btn-ajuda:hover{
+    background-color: #1d2150;
 }

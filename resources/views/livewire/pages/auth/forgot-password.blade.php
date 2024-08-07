@@ -36,7 +36,19 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div>
+@section('links')
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+@endsection
+
+@section('title', 'Esqueci minha senha')
+
+@section('header')
+    <a href="{{ route('login') }}" class="link-header">Entrar</a>
+    <a href="{{ route('register') }}" class="link-header">Criar Conta</a>
+@endsection
+
+<div class="form-1">
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Esqueceu sua senha? Não há problema. Basta nos informar seu endereço de e-mail e enviaremos um link de redefinição de senha que permitirá que você escolha um novo.') }}
     </div>

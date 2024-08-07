@@ -22,7 +22,7 @@
     <section class="box">
 
     </section>
-    <div class="box-1">
+    <div class="box-2">
         <h1>Informações Pessoais</h1>
         <b>Nome: </b>
         <p>{{ $usuario->name }}</p>
@@ -32,7 +32,9 @@
         <p>{{ $dateFormat }}</p>
     </div>
     <div class="box-1"> 
-        <h1>Modelos Favoritos</h1>
+        <h1>Ajuda</h1>
+        <a href="" class="btn-ajuda">Redefinir Senha</a>
+        <a href="" class="btn-ajuda">Verificar E-mail</a>
     </div>
     <section class="box">
         <p>A exclusão da sua conta é uma ação permanente, então antes de tomar qualquer decisão pense cautelosamente.</p> 

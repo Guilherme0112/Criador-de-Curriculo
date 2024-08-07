@@ -34,7 +34,7 @@ class LoginForm extends Form
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'form.email' => trans('auth.failed'),
+                'form.email' => trans('As credenciais estão incorretas'),
             ]);
         }
 
@@ -56,8 +56,8 @@ class LoginForm extends Form
 
         throw ValidationException::withMessages([
             'form.email' => trans('auth.throttle', [
-                'seconds' => $seconds,
-                'minutes' => ceil($seconds / 60),
+                'Segundos' => $seconds,
+                'Minutos' => ceil($seconds / 60),
             ]),
         ]);
     }
