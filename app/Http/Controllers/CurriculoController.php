@@ -19,10 +19,8 @@ class CurriculoController extends Controller
     public function profile(){
         try{
             $usuario = Auth::user();
-            $data = $usuario->created_at;
-            $dateFormat = $data->format('d/m/Y');
-            
-            return view('profile', compact('usuario', 'dateFormat'));
+        
+            return view('profile');
         } catch (Exception $e){
             return redirect()->route('index');
         }
@@ -38,10 +36,12 @@ class CurriculoController extends Controller
             $html = $modelo->html;
 
             $pdf = Pdf::loadHTML($html);
-            $pdfName = $modelo->nome;
+            $pdfName = $modelo->nomeDoModelo;
+            $path = public_path("pdfs/$pdfName");
+            $pdf->save($path);
 
-            // return $pdf->download($pdfName);
-            return view('criar', compact('html', 'pdfName'));
+
+            return view('criar', compact('html', 'pdfName'))->with('path', $path);
         } catch (Exception $e){
             // return redirect()->route('index');
             return response()->json(['Erro' => $e->getMessage()]);

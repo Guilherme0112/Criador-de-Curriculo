@@ -3,7 +3,7 @@ main{
     align-items: normal !important;
 }
 .papel{
-    width: 455px;
+    width: 700px;
     aspect-ratio: 1/1.25;
 
     border-radius: 7px;
@@ -13,8 +13,8 @@ main{
     display: flex;
     justify-content: start;
     align-items: unset !important;
-    padding: 10px;
     margin: 0 10px;
+    overflow: hidden;
 }
 .info{
     width: 300px;
