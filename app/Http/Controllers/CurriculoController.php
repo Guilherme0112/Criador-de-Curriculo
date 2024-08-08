@@ -35,11 +35,27 @@ class CurriculoController extends Controller
             $modelo = modelo::find($id);
             $html = $modelo->html;
 
+            // Ele guarda os valores do usuário em variáveis, e procura na string (HTML do PDF) por valores seguidos com $, e os substitui pelos valores das variavéis.
+
+            $nome = 'Fulano  de Tal';
+            $email = 'exemplo@gmail.com';
+            $telefone = '(00) 00000-0000';
+
+            $changes = [
+                '$Nome' => $nome,
+                '$Email' => $email,
+                '$Telefone' => $telefone
+
+            ];
+
+            foreach($changes as $change => $value){
+                $html = str_replace($change, $value, $html);
+            }
+
             $pdf = Pdf::loadHTML($html);
             $pdfName = $modelo->nomeDoModelo;
             $path = public_path("pdfs/$pdfName");
             $pdf->save($path);
-
 
             return view('criar', compact('html', 'pdfName'))->with('path', $path);
         } catch (Exception $e){
