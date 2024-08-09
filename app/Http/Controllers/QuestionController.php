@@ -11,7 +11,26 @@ class QuestionController extends Controller
 {
     public function question(){
         try{
-            return view('questionario');
+            $idUser = Auth::id();
+            $dadosFormularioDB = questionario::where('idUser', $idUser)->get();
+
+            // $nome = $dadosFormularioDB->nome ?? '';
+            // $email = $dadosFormularioDB->email ?? '';
+            // $telefone = $dadosFormularioDB->telefone ?? '';
+            // $experiencias = $dadosFormularioDB->experiencias ?? '';
+            // $habilidades = $dadosFormularioDB->habilidades ?? '';
+            // $formacoes = $dadosFormularioDB->formacoes ?? '';
+
+            foreach($dadosFormularioDB as $dados){
+                $nome = $dados->nome;
+                $email = $dados->email;
+                $telefone = $dados->telefone;
+                $experiencias = $dados->experiencias;
+                $habilidades = $dados->habilidades;
+                $formacoes = $dados->formacoes;
+            };
+
+                return view('questionario', compact('dados'));
         } catch (Exception $e){
             return response()->json(["Erro" => $e->getMessage()]);
         }
@@ -19,20 +38,27 @@ class QuestionController extends Controller
     public function store(Request $request){
         try{    
             $idUser = Auth::id();
-            // $dados = $request->validate([
-            //     // 'nome' => 'required|string|max: 50',
-            //     'email' => 'required|email|unique:questionarios',
-            //     'telefone' => 'required|string|max: 15',
-            //     'experiencias' => 'required|string|max: 500',
-            //     'habilidades' => 'required|string|max: 500',
-            //     'formacoes' => 'required|string|max: 500',
+            $dadosFormularioDB = questionario::where('idUser', $idUser)->get();
+            $dados = $request->validate([
+                'nome' => 'required|string|max: 50',
+                'email' => 'required|email|max: 200',
+                'telefone' => 'required|string|max: 15',
+                'experiencias' => 'required|string|max: 500',
+                'habilidades' => 'required|string|max: 500',
+                'formacoes' => 'required|string|max: 500',
 
-            // ]);
+            ]);
             $dados['idUser'] = $idUser;
-            // questionario::create($dados);
+
+            if($dadosFormularioDB->count() > 0){
+                questionario::where('idUser', $idUser)->delete();
+                questionario::create($dados);
+            } else {
+                questionario::create($dados);
+            }
             return redirect()->route("criar", ['id' => 1]);
         } catch (Exception $e){
-            return response()->json(["Erro " => $e->getMessage(), var_dump($dados)]);
+            return response()->json(["Erro " => $e->getMessage()]);
             // return view('questionario');
         }
     }

@@ -71,6 +71,8 @@ class CurriculoController extends Controller
                 $path = public_path("pdfs/$pdfName");
                 $pdf->save($path);
 
+                $html = str_replace("\n", "<span class='wrap'></span>", $html);
+
                 return view('criar', compact('html', 'pdfName'))->with('path', $path);
             } else {
                 return view('questionario');

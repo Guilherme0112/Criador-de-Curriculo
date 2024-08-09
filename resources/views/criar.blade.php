@@ -11,6 +11,7 @@
 @section('header')
     <a href="{{ route('dashboard') }}" class="link-header">Dashboard</a>
     <a href="{{ route('profile') }}" class="link-header">Meu perfil</a>
+    <a href="{{ route('question') }}" class="link-header">Criar outro currículo</a>
     <a href="{{ asset('../pdfs/' . $pdfName) }}" class="link-header" download="{{ $pdfName }}">Baixar</a>
     <form method="POST" action="{{ route('logout') }}">
         @csrf
@@ -30,3 +31,5 @@
         <p>1:1.25</p>
     </section>
 @endsection
+
+    
