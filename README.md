@@ -18,7 +18,12 @@ Este é um projeto onde o usuário pode criar currículos usando modelos pré-de
 <br>
 **Clone o repositório:** `git clone https://github.com/Guilherme/Criador-de-Curriculo.git`
 <br>
-**Banco de dados:** Importe o arquivo "database/database.sql".
+**Instale o composer:** Tenha o composer instalado e digite no terminal `composer install`
+<br>
+**Banco de dados:** Importe o arquivo "database/database.sql" ou rode as migrations.
+<br>
+**Conexão MySQL:** Copie o arquivo `.env.example` e renomeie para `.env`, e faça sua conexão com o banco de dados.
+
 
 **Autor**
 <br>
