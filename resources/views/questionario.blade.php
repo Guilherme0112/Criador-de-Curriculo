@@ -22,22 +22,22 @@
         <form action="{{ route('question-store') }}" method="post" class="form">
             @csrf
             <label for="">Digite seu nome:</label>
-            <input type="text" name="nome" id="" value="{{ $dados->nome }}">
+            <input type="text" name="nome" id="" value="">
             <label for="">Digite seu e-mail:</label>
-            <input type="text" name="email" id="" value="{{ $dados->email }}">
+            <input type="text" name="email" id="" value="">
             <label for="">Digite seu número telefone:</label>
-            <input type="text" name="telefone" id="" value="{{ $dados->telefone }}">
+            <input type="text" name="telefone" id="" value="">
             <label for="">Diga suas experiências:</label>
             <textarea name='experiencias'>
-                {{ $dados->experiencias}}
+              
             </textarea>
             <label for="">Diga suas habilidades:</label>
             <textarea name="habilidades">
-                {{ $dados->habilidades}}
+                
             </textarea>
             <label for="">Diga suas formações</label>
             <textarea name="formacoes">
-                {{ $dados->formacoes}}
+                
             </textarea>
             <button class="btn-one">Enviar</button>
         </form>

@@ -13,8 +13,9 @@ main{
     display: flex;
     justify-content: start;
     align-items: unset !important;
-    margin: 0 10px;
+    margin: 0 10px 10px 10px;
     overflow: hidden;
+    font-size: 15px;
 }
 .info{
     width: 300px;

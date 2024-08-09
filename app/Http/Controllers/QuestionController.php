@@ -14,23 +14,20 @@ class QuestionController extends Controller
             $idUser = Auth::id();
             $dadosFormularioDB = questionario::where('idUser', $idUser)->get();
 
-            // $nome = $dadosFormularioDB->nome ?? '';
-            // $email = $dadosFormularioDB->email ?? '';
-            // $telefone = $dadosFormularioDB->telefone ?? '';
-            // $experiencias = $dadosFormularioDB->experiencias ?? '';
-            // $habilidades = $dadosFormularioDB->habilidades ?? '';
-            // $formacoes = $dadosFormularioDB->formacoes ?? '';
+            if($dadosFormularioDB->count() > 0){
+                foreach($dadosFormularioDB as $dados){
+                    $nome = $dados->nome;
+                    $email = $dados->email;
+                    $telefone = $dados->telefone;
+                    $experiencias = $dados->experiencias;
+                    $habilidades = $dados->habilidades;
+                    $formacoes = $dados->formacoes;
+                };
+            } else {
+                $dados = '';
+            }
 
-            foreach($dadosFormularioDB as $dados){
-                $nome = $dados->nome;
-                $email = $dados->email;
-                $telefone = $dados->telefone;
-                $experiencias = $dados->experiencias;
-                $habilidades = $dados->habilidades;
-                $formacoes = $dados->formacoes;
-            };
-
-                return view('questionario', compact('dados'));
+            return view('questionario');
         } catch (Exception $e){
             return response()->json(["Erro" => $e->getMessage()]);
         }
@@ -59,7 +56,7 @@ class QuestionController extends Controller
             return redirect()->route("criar", ['id' => 1]);
         } catch (Exception $e){
             return response()->json(["Erro " => $e->getMessage()]);
-            // return view('questionario');
+            // return redirect()->route('question');
         }
     }
 }

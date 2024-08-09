@@ -8,6 +8,7 @@ use App\Models\questionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Storage;
 use Exception;
 
@@ -65,7 +66,7 @@ class CurriculoController extends Controller
                 foreach($changes as $change => $value){
                     $html = str_replace($change, $value, $html);
                 }
-
+                
                 $pdf = Pdf::loadHTML($html);
                 $pdfName = $modelo->nomeDoModelo;
                 $path = public_path("pdfs/$pdfName");
@@ -75,13 +76,13 @@ class CurriculoController extends Controller
 
                 return view('criar', compact('html', 'pdfName'))->with('path', $path);
             } else {
-                return view('questionario');
+                return redirect()->route('question');
             }
 
             
         } catch (Exception $e){
-            // return redirect()->route('index');
-            return response()->json(['Erro' => $e->getMessage()]);
+            return redirect()->route('question');
+            // return response()->json(['Erro' => $e->getMessage()]);
         }
     }
 }
