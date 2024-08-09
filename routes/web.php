@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CurriculoController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CurriculoController::class, 'index'])->name('index');
@@ -15,6 +16,14 @@ Route::get('/dashboard', [CurriculoController::class, 'dashboard'])
 Route::get('/profile', [CurriculoController::class, 'profile'])
     ->middleware('auth')
     ->name('profile');
+
+Route::get('/question', [QuestionController::class, 'question'])
+    ->middleware('auth')
+    ->name('question');
+
+Route::post('/question', [QuestionController::class, 'store'])
+->middleware('auth')
+->name('question-store');
 
 Route::get('/criar/{id}', [CurriculoController::class, 'criar'])
     ->where('id', '[0-9]+')

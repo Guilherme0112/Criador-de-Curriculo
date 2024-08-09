@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modelos', function (Blueprint $table) {
+        Schema::create('questionarios', function (Blueprint $table) {
             $table->id();
-            $table->text('foto');
-            $table->text('nomeDoModelo', 100);
-            $table->text('html');
+            $table->string('idUser');
+            $table->text('nome');
+            $table->text('email');
+            $table->text('telefone');
+            $table->text('experiencias');
+            $table->text('habilidades');
+            $table->text('formacoes');
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modelos');
+        Schema::dropIfExists('questionarios');
     }
 };

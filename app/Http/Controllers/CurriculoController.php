@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\informacoe;
 use App\Models\modelo;
+use App\Models\questionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -19,8 +20,11 @@ class CurriculoController extends Controller
     public function profile(){
         try{
             $usuario = Auth::user();
-        
-            return view('profile');
+            
+            $dateFormat = $usuario->created_at;
+            $dateFormat = $dateFormat->format('d/m/Y');
+
+            return view('profile', compact('usuario', 'dateFormat'));
         } catch (Exception $e){
             return redirect()->route('index');
         }
@@ -34,30 +38,45 @@ class CurriculoController extends Controller
         try{
             $modelo = modelo::find($id);
             $html = $modelo->html;
-
+            $idUser = Auth::id();
             // Ele guarda os valores do usuário em variáveis, e procura na string (HTML do PDF) por valores seguidos com $, e os substitui pelos valores das variavéis.
 
-            $nome = 'Fulano  de Tal';
-            $email = 'exemplo@gmail.com';
-            $telefone = '(00) 00000-0000';
+            $dadosQuestionario = questionario::where("idUser", $idUser)->get();
+            if($dadosQuestionario->count() > 0){
+                foreach($dadosQuestionario as $questionario){
+                    $nome = $questionario->nome;
+                    $email = $questionario->email;
+                    $telefone = $questionario->telefone;
+                    $experiencia = $questionario->experiencias;
+                    $habilidades = $questionario->habilidades;
+                    $formacao = $questionario->formacoes;
+                }
 
-            $changes = [
-                '$Nome' => $nome,
-                '$Email' => $email,
-                '$Telefone' => $telefone
+                $changes = [
+                    '$Nome' => $nome,
+                    '$Email' => $email,
+                    '$Telefone' => $telefone,
+                    '$Experiência' => $experiencia,
+                    '$Habilidades' => $habilidades,
+                    '$Formação' => $formacao
 
-            ];
+                ];
 
-            foreach($changes as $change => $value){
-                $html = str_replace($change, $value, $html);
+                foreach($changes as $change => $value){
+                    $html = str_replace($change, $value, $html);
+                }
+
+                $pdf = Pdf::loadHTML($html);
+                $pdfName = $modelo->nomeDoModelo;
+                $path = public_path("pdfs/$pdfName");
+                $pdf->save($path);
+
+                return view('criar', compact('html', 'pdfName'))->with('path', $path);
+            } else {
+                return view('questionario');
             }
 
-            $pdf = Pdf::loadHTML($html);
-            $pdfName = $modelo->nomeDoModelo;
-            $path = public_path("pdfs/$pdfName");
-            $pdf->save($path);
-
-            return view('criar', compact('html', 'pdfName'))->with('path', $path);
+            
         } catch (Exception $e){
             // return redirect()->route('index');
             return response()->json(['Erro' => $e->getMessage()]);
