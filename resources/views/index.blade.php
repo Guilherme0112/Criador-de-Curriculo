@@ -60,6 +60,14 @@
                 </div>
             @endforeach
         </section>
+        <section>
+            <div class="box-title">
+                <h1 class="title">Modelos</h1>
+            </div>
+            @foreach($modelos as $modelo)
+                <img src="{{ $modelo->foto }}" class="img-modelos">
+            @endforeach
+        </section>
     </main>
     <footer>
 

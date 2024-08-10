@@ -16,7 +16,11 @@ class CurriculoController extends Controller
 {
     public function index(){
         $informacoes = informacoe::all();
-        return view('index', ['informacoes' => $informacoes]);
+
+        $modelos = modelo::all()
+                ->take(10);
+
+        return view('index', ['informacoes' => $informacoes, 'modelos' => $modelos]);
     }
     public function profile(){
         try{
