@@ -57,7 +57,7 @@ class QuestionController extends Controller
             } else {
                 questionario::create($dados);
             }
-            return redirect()->route("criar", ['id' => 1]);
+            return redirect()->route("dashboard");
         } catch (Exception $e){
             return response()->json(["Erro " => $e->getMessage()]);
             // return redirect()->route('question');
