@@ -22,6 +22,8 @@ class QuestionController extends Controller
                     $experiencias = $dados->experiencias;
                     $habilidades = $dados->habilidades;
                     $formacoes = $dados->formacoes;
+                    $foto = $dados->foto;
+                    $idioma = $dados->idioma;
                 };
             } else {
                 $dados = '';
@@ -43,6 +45,8 @@ class QuestionController extends Controller
                 'experiencias' => 'required|string|max: 500',
                 'habilidades' => 'required|string|max: 500',
                 'formacoes' => 'required|string|max: 500',
+                'foto' => 'required|string|max:500',
+                'idiomas' => 'required|string|max:500'
 
             ]);
             $dados['idUser'] = $idUser;

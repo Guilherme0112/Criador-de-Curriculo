@@ -28,19 +28,15 @@
             <label for="">Digite seu número telefone:</label>
             <input type="text" name="telefone" id="" value="">
             <label for="">Diga suas experiências:</label>
-            <textarea name='experiencias'>
-              
-            </textarea>
+            <textarea name='experiencias'></textarea>
             <label for="">Diga suas habilidades:</label>
-            <textarea name="habilidades">
-                
-            </textarea>
-            <label for="">Diga suas formações</label>
-            <textarea name="formacoes">
-                
-            </textarea>
+            <textarea name="habilidades"></textarea>
+            <label for="">Diga suas formações:</label>
+            <textarea name="formacoes"></textarea>
+            <label for="">Idiomas:</label>
+            <textarea name="idiomas"></textarea>
+            <input type="file" name="foto">
             <button class="btn-one">Enviar</button>
         </form>
-</section>
-
+    </section>
 @endsection

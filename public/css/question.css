@@ -10,6 +10,7 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
 }
 .form{
     width: 500px;
@@ -31,4 +32,7 @@ input, textarea{
     width: 100%;
     border-radius: 7px !important;
     margin: 5px !important;
+}
+input[type='file']{
+    cursor: pointer;
 }

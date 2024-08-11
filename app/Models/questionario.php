@@ -18,6 +18,8 @@ class questionario extends Model
         'habilidades',
         'formacoes',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'idiomas',
+        'foto'
     ];
 }

@@ -55,6 +55,7 @@ class CurriculoController extends Controller
                     $experiencia = $questionario->experiencias;
                     $habilidades = $questionario->habilidades;
                     $formacao = $questionario->formacoes;
+                    $idioma = $questionario->idiomas;
                 }
 
                 $changes = [
@@ -63,7 +64,8 @@ class CurriculoController extends Controller
                     '$Telefone' => $telefone,
                     '$Experiência' => $experiencia,
                     '$Habilidades' => $habilidades,
-                    '$Formação' => $formacao
+                    '$Formação' => $formacao,
+                    '$Idioma' => $idioma
 
                 ];
 
