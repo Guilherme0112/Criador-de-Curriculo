@@ -11,7 +11,7 @@ form{
 }
 .box{
     max-width: 1130px;
-    height: 200px;
+    min-height: 150px;
     padding: 10px;
     border-radius: 7px;
     background-color: white;    
@@ -19,6 +19,10 @@ form{
 
     text-align: center;
     margin: 10px 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: normal;
 }
 .box p{
     width: 100%;

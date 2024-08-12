@@ -3,6 +3,7 @@
 @section('links')
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/profile.css">
+    <script src="../js/profile.js"></script>
 @endsection
 
 @section('title')
@@ -20,7 +21,24 @@
 
 @section('content')
     <section class="box">
-
+        <div>
+            @foreach($dadosC as $dadoC)
+                <b>Experiências</b>
+                <p><pre>{{ $dadoC['experiencias'] }}</pre></p>
+            @endforeach
+        </div>
+        <div>
+            @foreach($dadosC as $dadoC)
+                <b>Habilidades</b>
+                <p><pre>{{ $dadoC['habilidades'] }}</pre></p>
+            @endforeach
+        </div>
+        <div>
+            @foreach($dadosC as $dadoC)
+                <b>Formações</b>
+                <p><pre>{{ $dadoC['formacoes'] }}</pre></p>
+            @endforeach
+        </div>
     </section>
     <div class="box-2">
         <h1>Informações Pessoais</h1>
@@ -46,7 +64,7 @@
         <div>
             @foreach($dadosC as $dadoC)
                 <b>Idiomas:</b>
-                <p>{{ $dadoC['idiomas'] }}</p>
+                <p><pre>{{ $dadoC['idiomas'] }}</pre></p>
             @endforeach  
         </div>
     </div>
@@ -55,7 +73,7 @@
         <form method="POST" action="{{ route('destroyAccount') }}">
             @csrf
             @method('delete')
-            <button type="submit" class="btn btn-danger" title="Excluir Conta">Excluir Conta</button>
+            <button type="submit" class="btn btn-danger" id='delete' title="Excluir Conta">Excluir Conta</button>
         </form>
     </section>
 @endsection

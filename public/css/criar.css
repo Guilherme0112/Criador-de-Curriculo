@@ -19,9 +19,6 @@ main{
 .papel{
     font-size: 11px;
 }
-.papel h1{
-    margin: 5px !important;
-}
 .info{
     width: 300px;
     height: 100px;
@@ -32,5 +29,6 @@ main{
 
     justify-content: start;
     align-items: normal;
+
 }
 

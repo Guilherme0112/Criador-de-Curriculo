@@ -66,8 +66,8 @@ class QuestionController extends Controller
             }
             return redirect()->route("dashboard");
         } catch (Exception $e){
-            return response()->json(["Erro " => $e->getMessage()]);
-            // return redirect()->route('question');
+            $json = json_encode(["Erro" => $e->getMessage()]);
+            return redirect()->route('question');
         }
     }
 }
