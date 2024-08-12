@@ -24,14 +24,43 @@ class CurriculoController extends Controller
     }
     public function profile(){
         try{
+            // Informações do usuário
+
             $usuario = Auth::user();
-            
             $dateFormat = $usuario->created_at;
             $dateFormat = $dateFormat->format('d/m/Y');
 
-            return view('profile', compact('usuario', 'dateFormat'));
+            // Informações do currículo
+
+            $infoCurriculos = questionario::where('idUser', $usuario->id)
+                                            ->get();
+            
+            $dadosC = array();
+            if($infoCurriculos->count() > 0){
+                foreach($infoCurriculos as $infoCurriculo){
+                    $nomeCurriculo = $infoCurriculo->nome;
+                    $emailCurriculo = $infoCurriculo->email;
+                    $telCurriculo = $infoCurriculo->telefone;
+                    $expCurriculo = $infoCurriculo->experiencias;
+                    $habCurriculo = $infoCurriculo->habilidades;
+                    $forCurriculo = $infoCurriculo->formacoes;
+                    $idiCurriculo = $infoCurriculo->idiomas;
+                }
+                $dadosC[] = array(
+                    'nome' => $nomeCurriculo,
+                    'email' => $emailCurriculo,
+                    'telefone' => $telCurriculo,
+                    'experiencias' => $expCurriculo,
+                    'habilidades' => $habCurriculo,
+                    'formacoes' => $forCurriculo,
+                    'idiomas' => $idiCurriculo
+                );
+            }
+            
+            return view('profile', compact('usuario', 'dateFormat', 'dadosC'));
         } catch (Exception $e){
-            return redirect()->route('index');
+            // return redirect()->route('index');
+            return response()->json(["Erro" => $e->getMessage()]);
         }
     }
     public function dashboard(){
@@ -56,6 +85,7 @@ class CurriculoController extends Controller
                     $habilidades = $questionario->habilidades;
                     $formacao = $questionario->formacoes;
                     $idioma = $questionario->idiomas;
+                    $photo = $questionario->foto;
                 }
 
                 $changes = [
@@ -65,7 +95,8 @@ class CurriculoController extends Controller
                     '$Experiência' => $experiencia,
                     '$Habilidades' => $habilidades,
                     '$Formação' => $formacao,
-                    '$Idioma' => $idioma
+                    '$Idioma' => $idioma,
+                    '$Foto' => $photo
 
                 ];
 
@@ -87,8 +118,8 @@ class CurriculoController extends Controller
 
             
         } catch (Exception $e){
-            return redirect()->route('question');
-            // return response()->json(['Erro' => $e->getMessage()]);
+            // return redirect()->route('question');
+            return response()->json(['Erro' => $e->getMessage()]);
         }
     }
 }

@@ -6,6 +6,7 @@ use App\Models\questionario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 
 class QuestionController extends Controller
 {
@@ -45,13 +46,19 @@ class QuestionController extends Controller
                 'experiencias' => 'required|string|max: 500',
                 'habilidades' => 'required|string|max: 500',
                 'formacoes' => 'required|string|max: 500',
-                'foto' => 'required|string|max:500',
+                'foto' => 'required|image|max:500',
                 'idiomas' => 'required|string|max:500'
 
             ]);
             $dados['idUser'] = $idUser;
+            $imagePath = $request->file('foto')->store('public/photos');
+            $dados['foto'] = $imagePath;
 
             if($dadosFormularioDB->count() > 0){
+                $images = questionario::where('idUser', $idUser)->get();
+                foreach ($images as $image) {
+                    Storage::delete($image->foto);
+                }
                 questionario::where('idUser', $idUser)->delete();
                 questionario::create($dados);
             } else {

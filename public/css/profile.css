@@ -25,7 +25,7 @@ form{
 }
 .box-1{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-wrap: wrap;
 
@@ -37,6 +37,12 @@ form{
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 
     padding: 10px;
+}
+.box-1 p{
+    width: 100%;
+}.box-1 div{
+    height: 90%;
+    width: 50%;
 }
 .box-1 h1, .box-2 h1{
     text-align: center;

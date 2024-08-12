@@ -19,7 +19,7 @@
 
 @section('content')
     <section>
-        <form action="{{ route('question-store') }}" method="post" class="form">
+        <form action="{{ route('question-store') }}" method="post" class="form" enctype="multipart/form-data">
             @csrf
             <label for="">Digite seu nome:</label>
             <input type="text" name="nome" id="" value="">

@@ -32,9 +32,24 @@
         <p>{{ $dateFormat }}</p>
     </div>
     <div class="box-1"> 
-        <h1>Ajuda</h1>
-        <a href="" class="btn-ajuda">Redefinir Senha</a>
-        <a href="" class="btn-ajuda">Verificar E-mail</a>
+        <h1>Informações para o Currículo</h1>
+        <div>
+            @foreach($dadosC as $dadoC)
+                <b>Nome:</b>
+                <p>{{ $dadoC['nome'] }}</p>
+                <b>E-mail:</b>
+                <p>{{ $dadoC['email'] }}</p>
+                <b>Telefone:</b>
+                <p>{{ $dadoC['telefone'] }}</p>
+            @endforeach
+        </div>
+        <div>
+            @foreach($dadosC as $dadoC)
+                <b>Idiomas:</b>
+                <p>{{ $dadoC['idiomas'] }}</p>
+            @endforeach  
+            <a href="{{ route('question') }}">Criar outro currículo</a>
+        </div>
     </div>
     <section class="box">
         <p>A exclusão da sua conta é uma ação permanente, então antes de tomar qualquer decisão pense cautelosamente.</p> 
