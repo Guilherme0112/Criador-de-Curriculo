@@ -48,7 +48,6 @@
                 <b>Idiomas:</b>
                 <p>{{ $dadoC['idiomas'] }}</p>
             @endforeach  
-            <a href="{{ route('question') }}">Criar outro currículo</a>
         </div>
     </div>
     <section class="box">

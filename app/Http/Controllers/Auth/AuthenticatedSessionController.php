@@ -42,11 +42,15 @@ class AuthenticatedSessionController extends Controller
     
     public function destroyAccount(Request $request)
     {   
+        // Deletar Imagens relacionada a conta
+
         $idUser = Auth::id();
         $images = questionario::where('idUser', $idUser)->get();
         foreach ($images as $image) {
             Storage::delete($image->foto);
         }
+
+        questionario::where('idUser', $idUser)->delete();
 
         $user = $request->user();
 
