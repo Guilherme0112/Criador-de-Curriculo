@@ -46,7 +46,6 @@ class QuestionController extends Controller
                 'experiencias' => 'required|string|max: 500',
                 'habilidades' => 'required|string|max: 500',
                 'formacoes' => 'required|string|max: 500',
-                'foto' => 'required|image|max:500',
                 'idiomas' => 'required|string|max:500'
 
             ]);

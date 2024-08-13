@@ -3,6 +3,7 @@
 @section('links')
     <link rel="stylesheet" href="../css/style.css" class="css">
     <link rel="stylesheet" href="../css/question.css">
+    <link rel="stylesheet" href="../js/question.js">
 @endsection
 
 @section('title', 'Responda')
@@ -35,8 +36,7 @@
             <textarea name="formacoes"></textarea>
             <label for="">Idiomas:</label>
             <textarea name="idiomas"></textarea>
-            <input type="file" name="foto">
-            <button class="btn-one">Enviar</button>
+            <button class="btn-one" id="submit">Enviar</button>
         </form>
     </section>
 @endsection
