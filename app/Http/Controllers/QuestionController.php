@@ -40,14 +40,13 @@ class QuestionController extends Controller
             $idUser = Auth::id();
             $dadosFormularioDB = questionario::where('idUser', $idUser)->get();
             $dados = $request->validate([
-                'nome' => 'required|string|max: 50',
-                'email' => 'required|email|max: 200',
-                'telefone' => 'required|string|max: 15',
-                'experiencias' => 'required|string|max: 500',
-                'habilidades' => 'required|string|max: 500',
-                'formacoes' => 'required|string|max: 500',
-                'idiomas' => 'required|string|max:500'
-
+                'nome' => 'required|string|min:3|max:50',
+                'email' => 'required|email|min:3|max:200',
+                'telefone' => 'required|string|min:3|max:15',
+                'experiencias' => 'required|string|min:3|max:500',
+                'habilidades' => 'required|string|min:3|max:500',
+                'formacoes' => 'required|string|min:3|max:500',
+                'idiomas' => 'required|string|min:3|max:500'
             ]);
             $dados['idUser'] = $idUser;
             $imagePath = $request->file('foto')->store('public/photos');
@@ -66,7 +65,7 @@ class QuestionController extends Controller
             return redirect()->route("dashboard");
         } catch (Exception $e){
             $json = json_encode(["Erro" => $e->getMessage()]);
-            return redirect()->route('question');
+            return redirect()->route('question')->withErrors($e->errors())->withInput();
         }
     }
 }
