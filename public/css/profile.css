@@ -80,3 +80,7 @@ form{
 .btn-ajuda:hover{
     background-color: #1d2150;
 }
+pre{
+    font-family: figtree !important;
+
+}
