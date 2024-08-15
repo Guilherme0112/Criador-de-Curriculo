@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Storage;
-use Lang;
+use Illuminate\Validation\ValidationException;
 
 class QuestionController extends Controller
 {
@@ -71,10 +71,13 @@ class QuestionController extends Controller
             }
 
             return redirect()->route("dashboard");
-        } catch (Exception $e){
+        } catch (ValidationException $e){
 
             // $json = json_encode(["Erro" => $e->getMessage()]);
             return redirect()->route('question')->withErrors($e->errors())->withInput();
+        } catch (Exception $e){
+            return redirect()->route('index');
         }
+
     }
 }
