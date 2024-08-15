@@ -27,6 +27,7 @@ section{
 label{
     width: 100%;
     text-align: start;
+    margin-left: 10px;
 }
 input, textarea{
     width: 100%;
