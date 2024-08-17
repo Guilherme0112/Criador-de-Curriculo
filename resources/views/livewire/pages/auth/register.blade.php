@@ -20,11 +20,17 @@ new #[Layout('layouts.guest')] class extends Component
      */
     public function register(): void
     {
+        $message = [
+            'required' => 'Este campo é obrigatório',
+            'max' => 'Este campo deve ter menos que :max caracteres',
+            'min' => 'Este campo deve ter mais que :min caracteres',
+            'confirmed' => 'As senhas não coencidem.',
+        ];
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'min:3'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
-        ]);
+        ], $message);
 
         $validated['password'] = Hash::make($validated['password']);
 
@@ -34,7 +40,8 @@ new #[Layout('layouts.guest')] class extends Component
 
         $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
-}; ?>
+}; 
+?>
 
 @section('title', 'Registrar')
 
@@ -48,14 +55,14 @@ new #[Layout('layouts.guest')] class extends Component
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Nome')" />
-            <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
+            <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name"  autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" />
+            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email"  autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -66,7 +73,7 @@ new #[Layout('layouts.guest')] class extends Component
             <x-text-input wire:model="password" id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="new-password" />
+                            autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -77,7 +84,7 @@ new #[Layout('layouts.guest')] class extends Component
 
             <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
                             type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+                            name="password_confirmation"  autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>

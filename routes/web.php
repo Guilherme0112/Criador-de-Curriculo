@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CurriculoController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CurriculoController::class, 'index'])->name('index');
