@@ -27,6 +27,7 @@ new #[Layout('layouts.guest')] class extends Component
             'max' => 'Este campo deve ter menos que :max caracteres',
             'min' => 'Este campo deve ter mais que :min caracteres',
             'confirmed' => 'As senhas não coencidem.',
+            'unique' => 'Este e-mail já está sendo usado.',
         ];
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255', 'min:3'],
