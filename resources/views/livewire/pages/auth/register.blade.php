@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\Welcome;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
@@ -7,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use Illuminate\Support\Facades\Mail;
 
 new #[Layout('layouts.guest')] class extends Component
 {
@@ -36,7 +38,14 @@ new #[Layout('layouts.guest')] class extends Component
 
         event(new Registered($user = User::create($validated)));
 
+        
         Auth::login($user);
+        
+        Mail::to($validated['email'], $validated['name'])->send(new Welcome([
+            'fromEmail' => $validated['email'],
+            'fromName' => $validated['name'],
+
+        ]));
 
         $this->redirect(route('dashboard', absolute: false), navigate: true);
     }
